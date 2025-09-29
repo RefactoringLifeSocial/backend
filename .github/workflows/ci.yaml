@@ -1,0 +1,16 @@
+name: Backend CI
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  go-ci:
+    uses: RefactoringLifeSocial/devops/.github/workflows/go-ci.yml@main
+
+  marker:
+    runs-on: ubuntu-latest
+    needs: go-ci
+    steps:
+      - run: echo "Pipeline Go CI completado ✅"
